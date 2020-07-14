@@ -1,0 +1,268 @@
+<div className="register-container">
+            <header>
+                <Link to="/">
+                    <FiCornerUpLeft/>
+                    <p>Voltar para o login</p>
+                </Link>
+            </header>
+            <div className="content">
+            <section>
+                <form onSubmit={handleRegister}>
+                    <img src={logoImg} alt="Imagem Logo"/>
+                    <h1>Olá Visitante!</h1>
+                    <h3>Cadastre-se para entrar no sistema</h3>
+                    <div className="input-group">
+                        <div className="input-row">
+                            <div className="name">
+                                <input type="text" 
+                                placeholder="Nome Fantasia"
+                                value={nomeFantasia}
+                                onChange={e=> setNomeFantasia(e.target.value)}
+                                />
+                            </div>
+                            <div className="cnpj">
+                                <input type="text" 
+                                placeholder="Razão Social"
+                                value={razaoSocial}
+                                onChange={e=> setRazaoSocial(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div className="input-row">
+                            <div className="social_reason">
+                                <input type="text" 
+                                placeholder="CNPJ"
+                                value={cnpj}
+                                onChange={e=> setCnpj(e.target.value)}
+                                />
+                            </div>
+                            <div className="localization">
+                                <input type="text" 
+                                placeholder="Localização"
+                                value={localizacao}
+                                onChange={e=> setLocalizacao(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="toggle">
+                        <h3>Criação <br/>de Gaiola</h3>
+                        <label className="switch">
+                        <input type="checkbox"
+                        value={criacao}
+                        onChange={e=> setCriacao(e.target.checked)}
+                        />
+                        <span className="slider round"></span>
+                        </label>
+                        <h3>Criação <br/>de Piso</h3>
+                    </div>
+                    <div className="authorization">
+                        <input type="checkbox" 
+                        name="auth_button"
+                        value={confirmacao}
+                        onChange={e=> setConfirmacao(e.target.checked)}
+                        />
+                        <p>Concordo com os <b>termos de uso de dados</b></p>
+                    </div>
+
+                    <div>
+                    <button type="submit">Login</button>
+                    </div>
+                </form>
+            </section>
+            </div>
+        </div>
+
+##CSS
+
+.register-container{
+    width: 100%;
+    max-width: 1120px;
+    height: 100vh;
+
+    display:flex;
+    background-image: url(../../assets/egground_register.svg);
+    background-repeat: no-repeat;
+    background-size: 75vh;
+}
+.register-container header{
+    height: 10px;
+    width: 200px;
+}
+.register-container a{
+    width: 200px;
+    margin: 20px;
+    font:700 20px Roboto,'sans-serif';
+    display: flex;
+    color:white;
+}
+.register-container header a p{
+    margin-left: 10px;
+}
+.register-container .content{
+    width: 100%;
+    margin:auto auto;
+    display: flex;
+}
+.register-container .content section{
+    text-align: center;
+    width: 90%;
+}
+.register-container .content section form h1{
+    margin-top:15px;
+    font:900 30px Roboto,'sans-serif';
+}
+.register-container .content section form h3{
+    margin-top:5px;
+    font:700 20px Roboto,'sans-serif';
+}
+section form .input-group {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 30px;
+}
+section form .input-row input{
+    margin-right: 8vw;
+    padding-left: 70px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    border: 0;
+    border-radius:8px;
+    background: #FFC43A;
+    color:#ffffff;
+    width: 450px;
+    height: 60px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+}
+section form .input-row input::placeholder{
+    color:#fff;
+}
+form .input-group .input-row .name{
+    position: relative;
+}
+form .input-group .input-row .name:before{
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 50px;
+    height: 40px;
+    background: url("data:image/svg+xml,%3Csvg width='49' height='48' viewBox='0 0 49 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0)'%3E%3Cpath d='M24.5 22C28.4465 22 31.6458 18.866 31.6458 15C31.6458 11.134 28.4465 8 24.5 8C20.5535 8 17.3542 11.134 17.3542 15C17.3542 18.866 20.5535 22 24.5 22Z' fill='white'/%3E%3Cpath d='M24.5 0C19.6544 0 14.9175 1.40758 10.8885 4.04473C6.85952 6.68188 3.7193 10.4302 1.86495 14.8156C0.0106047 19.201 -0.474577 24.0266 0.470761 28.6822C1.4161 33.3377 3.7495 37.6141 7.17588 40.9706C10.6023 44.327 14.9678 46.6128 19.7203 47.5388C24.4728 48.4649 29.3989 47.9896 33.8757 46.1731C38.3525 44.3566 42.1789 41.2805 44.871 37.3337C47.5631 33.3869 49 28.7468 49 24C49 17.6348 46.4187 11.5303 41.8241 7.02944C37.2295 2.52856 30.9978 0 24.5 0V0ZM24.5 5.625C26.4875 5.625 28.4304 6.20234 30.083 7.28401C31.7355 8.36569 33.0235 9.90311 33.7841 11.7019C34.5447 13.5006 34.7437 15.4799 34.356 17.3895C33.9682 19.299 33.0112 21.0531 31.6058 22.4298C30.2004 23.8065 28.4098 24.744 26.4605 25.1238C24.5111 25.5037 22.4906 25.3087 20.6544 24.5637C18.8182 23.8186 17.2487 22.5569 16.1445 20.938C15.0403 19.3192 14.4509 17.416 14.4509 15.469C14.4539 12.8591 15.5136 10.3569 17.3975 8.51146C19.2814 6.66598 21.8357 5.62791 24.5 5.625ZM40.8129 33.075C39.1751 35.8989 36.8027 38.2472 33.9372 39.8808C31.0717 41.5144 27.8155 42.3751 24.5 42.3751C21.1845 42.3751 17.9283 41.5144 15.0628 39.8808C12.1973 38.2472 9.82487 35.8989 8.18708 33.075L7.67667 32.201L8.35756 31.448C9.30074 30.404 10.4593 29.568 11.7568 28.9952C13.0542 28.4224 14.461 28.1258 15.8842 28.125H33.1138C34.5369 28.1257 35.9437 28.4223 37.2412 28.9951C38.5387 29.5679 39.6973 30.404 40.6404 31.448L41.3213 32.201L40.8129 33.075Z' fill='white'/%3E%3Cpath d='M15.8872 30.937C14.1921 30.9378 12.552 31.5258 11.2567 32.597C12.7059 34.7386 14.6737 36.4954 16.9846 37.7107C19.2955 38.9261 21.8776 39.5621 24.5005 39.5621C27.1234 39.5621 29.7055 38.9261 32.0164 37.7107C34.3273 36.4954 36.2951 34.7386 37.7443 32.597C36.4491 31.5258 34.8089 30.9378 33.1138 30.937H15.8872Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0'%3E%3Crect width='49' height='48' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E") center/ contain no-repeat;
+}
+.input-row .cnpj{
+    position:relative;
+}
+.input-row .cnpj:before{
+    content:"";
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 50px;
+    height: 40px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-briefcase'%3E%3Crect x='2' y='7' width='20' height='14' rx='2' ry='2'%3E%3C/rect%3E%3Cpath d='M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16'%3E%3C/path%3E%3C/svg%3E") center/ contain no-repeat;
+}
+form .input-group .input-row .social_reason{
+    position: relative;
+}
+form .input-group .input-row .social_reason:before{
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 50px;
+    height: 40px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-feather'%3E%3Cpath d='M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z'%3E%3C/path%3E%3Cline x1='16' y1='8' x2='2' y2='22'%3E%3C/line%3E%3Cline x1='17.5' y1='15' x2='9' y2='15'%3E%3C/line%3E%3C/svg%3E") center/ contain no-repeat;
+}
+form .input-group .input-row .localization{
+    position: relative;
+}
+form .input-group .input-row .localization:before{
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 50px;
+    height: 40px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-map-pin'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'%3E%3C/path%3E%3Ccircle cx='12' cy='10' r='3'%3E%3C/circle%3E%3C/svg%3E") center/ contain no-repeat;
+}
+section form .toggle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section form .toggle h3{
+    margin-top: 0px !important;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+section form .authorization{
+    margin-top:30px;
+    display:inline-flex;
+    align-items: center;
+}
+section form .authorization a{
+    background: none;
+}
+section form .authorization p{
+    margin-left: 10px;
+    font-size: 12px;
+}
+section form button{
+    border:0;
+    border-radius:8px;
+    margin-top: 20px;
+    width: 140px;
+    height: 60px;
+    font-size: 24px;
+    background:#FFC43A;
+    color:white;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #c4c4c4;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #333232;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #FFC43A;
+}
+
+input:checked + .slider:before {
+  background-color: #fff;  
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
