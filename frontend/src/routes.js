@@ -9,8 +9,8 @@ export default function Routes(){
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Logon}/>
-                <Route path="/cadastro" component={Register}/>
-                <Route path="/setor-lote" component={Sector}/>
+                <Route path="/register" component={Register}/>
+                <Route path="/sector" component={Sector}/>
             </Switch>
         </BrowserRouter>
     )

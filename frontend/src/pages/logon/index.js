@@ -18,7 +18,7 @@ export default function Logon (){
             localStorage.setItem('granjaID',id);
             localStorage.setItem('granjaName',response.data.nomefantasia);
 
-            history.push('/setor-lote');
+            history.push('/sector');
         }
         catch(error){
             alert('O Id informado não corresponde a nenhuma granja cadastrada')
