@@ -2,7 +2,7 @@ const connection = require('../database/connection');
 
 module.exports = {
   async create(request, response) {
-    const { linhagem, idade, nutrição, numero_de_aves } = request.body;
+    const { linhagem, idade, nutrição, numero_de_aves, galpao } = request.body;
     const granja_id = request.headers.authorization;
 
     const [id] = await connection('lotes').insert({
@@ -10,6 +10,7 @@ module.exports = {
       idade,
       nutrição,
       numero_de_aves,
+      galpao,
       granja_id,
     });
 
@@ -21,7 +22,7 @@ module.exports = {
     const { page = 1} = request.query;
     const granja_id = request.headers.authorization;
     const lotes = await connection('lotes').limit(10).offset((page-1)*1).where('granja_id', granja_id).select('*');
-    
+
     return response.json(lotes);
   },
   async delete(request, response){
