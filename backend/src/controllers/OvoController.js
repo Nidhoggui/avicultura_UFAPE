@@ -44,4 +44,15 @@ module.exports = {
       await connection ('cascas').where('id', id_casca).delete();
       return response.status(204).send();
     },
+    async update(request, response, next){
+      try{
+        const { id } = request.params;
+        const { peso } = request.body;
+
+        await connection('ovos').update({ peso }).where('id', id);
+        return response.send();
+      }catch(error){
+        next(error);
+      }
+    },
 }

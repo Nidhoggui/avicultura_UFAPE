@@ -22,16 +22,17 @@ routes.delete('/perfil-lote/:id', LoteController.delete);
 
 routes.post('/albumen', AlbúmenController.create);
 routes.delete('/revisar-ovo/albumen/:id', AlbúmenController.delete);
+routes.put('/revisar-ovo/albumen/:id', AlbúmenController.update);
 routes.post('/casca', CascaController.create);
 routes.delete('/revisar-ovo/casca/:id', CascaController.delete);
+routes.put('/revisar-ovo/casca/:id', CascaController.update);
 routes.post('/gema', CascaController.create);
 routes.delete('/revisar-ovo/gema/:id', GemaController.delete);
+routes.put('/revisar-ovo/gema/:id', GemaController.update);
 
 routes.post('/ovo', OvoController.create);
 routes.get('/perfil-ovos' OvoController.index);
-routes.delete('/perfil-ovos/:id', OvoController.delete)
-
-
-
+routes.delete('/perfil-ovos/:id', OvoController.delete);
+routes.put('/perfil-ovos/:id', OvoController.update);
 
 module.exports = routes;

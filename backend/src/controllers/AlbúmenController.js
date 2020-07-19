@@ -19,4 +19,15 @@ module.exports = {
     const { id } = request.params;
     await connection ('albúmen').where('id', id).delete();
   },
+  async update(request, response, next){
+    try{
+      const { id } = request.params;
+      const { peso, altura, diametro, haugh } = request.body;
+
+      await connection('albúmen').update({ peso, altura, diametro, haugh }).where('id', id);
+      return response.send();
+    }catch(error){
+      next(error);
+    }
+  },
 }

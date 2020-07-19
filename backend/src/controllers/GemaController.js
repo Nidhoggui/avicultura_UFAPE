@@ -20,4 +20,15 @@ module.exports = {
     const { id } = request.params;
     await connection ('gemas').where('id', id).delete();
   },
+  async update(request, response, next){
+    try{
+      const { id } = request.params;
+      const { peso, altura, diametro, indice, cor } = request.body;
+
+      await connection('gemas').update({ peso, altura, diametro, indice, cor }).where('id', id);
+      return response.send();
+    }catch(error){
+      next(error);
+    }
+  },
 }
