@@ -16,4 +16,9 @@ module.exports = {
       id
     });
   },
+
+  async delete(request, response){
+    const { id } = request.params;
+    await connection ('cascas').where('id', id).delete();
+  },
 }

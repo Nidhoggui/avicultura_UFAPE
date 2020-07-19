@@ -21,10 +21,17 @@ routes.get('/perfil-lote', LoteController.index);
 routes.delete('/perfil-lote/:id', LoteController.delete);
 
 routes.post('/albumen', AlbúmenController.create);
+routes.delete('/revisar-ovo/albumen/:id', AlbúmenController.delete);
 routes.post('/casca', CascaController.create);
+routes.delete('/revisar-ovo/casca/:id', CascaController.delete);
 routes.post('/gema', CascaController.create);
+routes.delete('/revisar-ovo/gema/:id', GemaController.delete);
 
 routes.post('/ovo', OvoController.create);
+routes.get('/perfil-ovos' OvoController.index);
+routes.delete('/perfil-ovos/:id', OvoController.delete)
+
+
 
 
 module.exports = routes;

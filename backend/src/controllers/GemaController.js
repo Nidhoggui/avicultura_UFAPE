@@ -15,4 +15,9 @@ module.exports = {
       id
     });
   },
+
+  async delete(request, response){
+    const { id } = request.params;
+    await connection ('gemas').where('id', id).delete();
+  },
 }
