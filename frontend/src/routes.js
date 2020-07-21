@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import Logon from './pages/logon'
 import Register from './pages/register'
-import Sector from './pages/avicultura/Sector';
+import Avicultura from './pages/avicultura'
 
 export default function Routes(){
     return(
@@ -10,7 +10,10 @@ export default function Routes(){
             <Switch>
                 <Route path="/" exact component={Logon}/>
                 <Route path="/register" component={Register}/>
-                <Route path="/sector" component={Sector}/>
+                <Route path="/sector" component={Avicultura}/>
+                <Route path="/egg" component={Avicultura}/>
+                <Route path="/egg/albumen" component={Avicultura}/>
+                <Route path="/dashboard" component={Avicultura}/>
             </Switch>
         </BrowserRouter>
     )

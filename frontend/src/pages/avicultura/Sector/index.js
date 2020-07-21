@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import {FiChevronRight} from 'react-icons/fi';
-import Bar from '../Bar'
 
 import api from '../../../services/api'
 
@@ -39,7 +38,6 @@ export default function Sector(){
 
     return(
         <div className="section-container">
-            <Bar/>
             <div className="content">
                 <h2>Cadastro de Setor/Lote</h2>
                 <div className="container">

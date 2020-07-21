@@ -6,6 +6,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
+    z-index:5;
 }
 .bar-container header{
     margin-top: 10px;
@@ -93,5 +94,13 @@
 }
 .bar-container section a.Granja p{
     font-size: 18px;
+}
+.bar-container hr{
+    position: relative;
+    float: right;
+    transform: rotate(90deg);
+    width:40px;
+    border:1px solid #1976D2;
+    transition: top 1s;
 }
 

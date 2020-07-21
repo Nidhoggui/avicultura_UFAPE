@@ -1,14 +1,17 @@
 const connection = require('../database/connection');
 
 module.exports = {
+  async index(request,response){
+    const gemas=await connection('gemas').select('*');
+    response.json(gemas);
+  },
   async create(request, response){
     const { peso, altura, diametro, indice, cor } = request.body;
 
-    const [id] = await connection('cascas').insert({
+    const [id] = await connection('gemas').insert({
       peso,
       altura,
       diametro,
-      indice,
       cor,
     });
     return response.json({

@@ -15,6 +15,7 @@ const routes = express.Router();
 routes.post('/login', SessionController.create);
 
 routes.post('/cadastro', GranjaController.create);
+routes.get('/listar-granjas',GranjaController.index);
 
 routes.post('/setor-lote', LoteController.create);
 routes.get('/perfil-lote', LoteController.index);
@@ -26,12 +27,13 @@ routes.put('/revisar-ovo/albumen/:id', AlbúmenController.update);
 routes.post('/casca', CascaController.create);
 routes.delete('/revisar-ovo/casca/:id', CascaController.delete);
 routes.put('/revisar-ovo/casca/:id', CascaController.update);
-routes.post('/gema', CascaController.create);
+routes.post('/gema',GemaController.create);
+routes.get('/lista-gemas', GemaController.index);
 routes.delete('/revisar-ovo/gema/:id', GemaController.delete);
 routes.put('/revisar-ovo/gema/:id', GemaController.update);
 
 routes.post('/ovo', OvoController.create);
-routes.get('/perfil-ovos' OvoController.index);
+routes.get('/perfil-ovos' , OvoController.index);
 routes.delete('/perfil-ovos/:id', OvoController.delete);
 routes.put('/perfil-ovos/:id', OvoController.update);
 
