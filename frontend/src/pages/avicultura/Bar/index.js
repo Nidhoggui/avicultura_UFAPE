@@ -20,6 +20,9 @@ export default function Bar(){
                 hr.style.top='122px';
                 break;
             case '/egg':
+            case '/egg/albumen':
+            case '/egg/casca':
+            case '/egg/revisar':
                 hr.style.top='195px';
                 break;
         }

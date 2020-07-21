@@ -20,8 +20,10 @@ module.exports = {
   },
   async index(request, response) {
     const { page = 1} = request.query;
+
     const granja_id = request.headers.authorization;
-    const lotes = await connection('lotes').limit(10).offset((page-1)*1).where('granja_id', granja_id).select('*');
+    const lotes = await connection('lotes').join('granjas','granjas.id','=','lotes.granja_id').limit(5)
+    .offset((page-1)*5).select('*');
 
     return response.json(lotes);
   },

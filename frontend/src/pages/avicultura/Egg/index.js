@@ -49,6 +49,7 @@ export default function Egg(){
         <div className="ovo-container">
             <div className="content">
                 <h2>Cadastro de ovo</h2>
+                <h3>Gema</h3>
                 <div className="container">
                 <form onSubmit={handleGema} id="sector_form">
                         <div className="input-group">
