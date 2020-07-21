@@ -3,7 +3,7 @@ const connection = require('../database/connection');
 
 module.exports = {
   async create(request, response) {
-    const { nomefantasia, razaosocial, cnpj, proprietario, gaiola } = request.body;
+    const { nomefantasia, razaosocial, cnpj, proprietario, gaiola, localizacao, termos_de_uso } = request.body;
     const id = crypto.randomBytes(3).toString('HEX');
     await connection('granjas').insert({
       id,
@@ -11,7 +11,9 @@ module.exports = {
       razaosocial,
       cnpj,
       proprietario,
-      gaiola
+      gaiola,
+      localizacao,
+      termos_de_uso
     });
     return response.json({
       id

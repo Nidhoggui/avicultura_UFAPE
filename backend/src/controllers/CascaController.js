@@ -32,4 +32,8 @@ module.exports = {
       next(error);
     }
   },
+  async index(request,response){
+    const cascas=await connection('cascas').select('*');
+    return response.json(cascas)
+  }
 }

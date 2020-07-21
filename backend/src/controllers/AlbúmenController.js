@@ -8,7 +8,6 @@ module.exports = {
       peso,
       altura,
       diametro,
-      haugh,
     });
     return response.json({
       id
@@ -22,12 +21,16 @@ module.exports = {
   async update(request, response, next){
     try{
       const { id } = request.params;
-      const { peso, altura, diametro, haugh } = request.body;
+      const { peso, altura, diametro } = request.body;
 
-      await connection('albúmen').update({ peso, altura, diametro, haugh }).where('id', id);
+      await connection('albúmen').update({ peso, altura, diametro }).where('id', id);
       return response.send();
     }catch(error){
       next(error);
     }
+  },
+  async index(request,response){
+    const albumen=await connection('albúmen').select('*');
+    return response.json(albumen)
   },
 }

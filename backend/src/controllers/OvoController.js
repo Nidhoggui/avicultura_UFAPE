@@ -8,7 +8,7 @@ module.exports = {
     const id_casca = request.headers.cascas;
     const lote_id = request.headers.lotes;
 
-    const [id] = await connection('lotes').insert({
+    const [id] = await connection('ovos').insert({
       peso,
       id_gema,
       id_albumen,

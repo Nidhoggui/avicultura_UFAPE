@@ -37,4 +37,14 @@ module.exports = {
     await connection ('lotes').where('id', id).delete();
     return response.status(204).send();
   },
+  async update(request, response, next){
+    try{
+      const { id } = request.params;
+      const { linhagem, idade, nutrição, numero_de_aves, galpao } = request.body;
+      await connection('lotes').update({ linhagem, idade, nutrição, numero_de_aves, galpao }).where('id', id);
+      return response.send();
+    }catch(error){
+      next(error);
+    }
+  },
 };
