@@ -16,5 +16,10 @@ module.exports = {
     return response.json({
       id
     });
+  },
+  async index(request,response){
+    const granjas=await connection('granjas').select('*');
+
+    return response.json(granjas)
   }
 };
