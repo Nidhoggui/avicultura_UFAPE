@@ -14,7 +14,6 @@ export default function Sector(){
     const granjaID=localStorage.getItem('granjaID');
 
     async function handleSector(event){
-        event.preventDefault();
 
         const data={
             linhagem,
@@ -29,7 +28,7 @@ export default function Sector(){
                     Authorization:granjaID,
                 }
             })
-            alert(`Setor cadastrado com Sucesso! Seu id é: ${response}`)
+            alert(`Setor cadastrado com Sucesso! Seu id é: ${response.data.id}`)
         }
         catch(error){
             alert('Algo deu errado,tente novamente')

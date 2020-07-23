@@ -10,10 +10,10 @@ export default function Register(){
     const [nomeFantasia,setNomeFantasia] =useState('');
     const [razaoSocial,setRazaoSocial] =useState('');
     const [proprietario,setProprietario] =useState('');
-    const [cnpj,setCnpj] =useState('0');
+    const [cnpj,setCnpj] =useState('');
     const [localizacao,setLocalizacao] =useState('');
     const [gaiola,setGaiola] =useState(false);
-    const [confirmacao,setConfirmacao] =useState(false);
+    const [termosDeUso,setTermosDeUso] =useState(false);
     const history= useHistory();
 
 
@@ -26,15 +26,23 @@ export default function Register(){
             proprietario,
             gaiola,
             localizacao,
-            confirmacao,
+            termosDeUso,
         }
         try{
             const response= await api.post('cadastro',data);
             alert(`Seu ID é ${response.data.id}, use-o para fazer login`);
-            history.push('/');
+            history.push({
+                pathname:'/',
+                state:{id:response.data.id}
+            });
         }
         catch(error){
-            alert("Error ao se cadastrar, tente novamente.")
+            if(error.message.includes('428')){
+                alert('É necessário aceitar os termos de uso para se cadastrar no sistema')
+            }
+            else{
+                alert('Ocorreu um problema ao se cadastrar. Por favor,tente novamente')
+            }
         }
     }
 
@@ -105,8 +113,8 @@ export default function Register(){
                     <div className="authorization">
                         <input type="checkbox" 
                         name="auth_button"
-                        value={confirmacao}
-                        onChange={e=> setConfirmacao(e.target.checked)}
+                        value={termosDeUso}
+                        onChange={e=> setTermosDeUso(e.target.checked)}
                         />
                         <p>Concordo com os <b>termos de uso de dados</b></p>
                     </div>

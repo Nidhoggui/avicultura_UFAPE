@@ -2,18 +2,16 @@ const connection = require('../database/connection');
 
 module.exports = {
   async create(request, response) {
-    const { peso } = request.body;
-    const id_gema = request.headers.gemas;
-    const id_albumen = request.headers.albumen;
-    const id_casca = request.headers.cascas;
-    const lote_id = request.headers.lotes;
+    const { pesoOvo, id_gema, id_albumen, id_casca, lote } = request.body;
+    const granja_id = request.headers.authorization;
 
     const [id] = await connection('ovos').insert({
-      peso,
+      pesoOvo,
       id_gema,
       id_albumen,
       id_casca,
-      lote_id,
+      lote,
+      granja_id
     });
     return response.json({
       id
@@ -22,7 +20,7 @@ module.exports = {
     async index(request, response) {
       const { page = 1} = request.query;
       const lote_id = request.headers.lotes;
-      const ovos = await connection('ovos').limit(10).offset((page-1)*1).where('lote_id', lote_id).select('*');
+      const ovos = await connection('ovos').select('*');
 
       return response.json(ovos);
     },

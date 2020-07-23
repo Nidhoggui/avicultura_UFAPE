@@ -25,6 +25,8 @@ export default function Bar(){
             case '/egg/revisar':
                 hr.style.top='195px';
                 break;
+            default:
+                hr.style.display='none';
         }
     },[])
     function translateHr(event){
@@ -42,6 +44,8 @@ export default function Bar(){
             case 'perfil':
                 hr.style.top='267px';
                 break;
+            default:
+                hr.style.display='none';
         }
     }
     return(
@@ -72,7 +76,7 @@ export default function Bar(){
                         <p id="egg">Ovos</p>
                     </div>
                 </Link>
-                <Link to="/egg" className="Granja" onClick={translateHr}>
+                <Link to="/profile" className="Granja" onClick={translateHr}>
                     <img src={User} alt="Imagem Logo"/>
                     <div className="text">
                         <h4 id="perfil">Minha</h4>

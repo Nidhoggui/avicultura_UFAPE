@@ -23,51 +23,39 @@
  width: 55vw;
  height: 70vh;
 }
-.revisar-container .content .container .input-group{
-    display: flex;
+.revisar-container .content .container .collection{
+    margin-top: 15px;
+    width: 100%;
+    border:1px solid #000;
+    border-bottom: 0px;
+    display:flex;
     flex-direction: column;
 }
-.revisar-container .content .container .input-group .input+ .input{
-  margin-top:30px;
+.revisar-container .content .container .collection .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px;
+    padding-left:15px;
+    padding-right: 20px;
+    border-bottom: 1px solid #000;
 }
-.revisar-container .content .container .input-group .input .label{
+.revisar-container .content .container .collection .row .title{
     display: flex;
     align-items: center;
 }
-.revisar-container .content .container .input-group .input .label p{
-    margin-left: 10px;
+.revisar-container .content .container .collection .row .title img{
+    width: 30px;
 }
-.revisar-container .content .container .input-group .input .label+.label{
-  margin-top:15px;
-}
-.revisar-container .content .container h4{
+.revisar-container .content .container .collection .row .title h4{
+    margin-left: 15px;
     font:700 18px Roboto,'sans-serif';
-    margin-bottom: 15px;
 }
-.revisar-container .content .container input[type=number]{
-    -moz-appearance: textfield;
-    border-radius: 15px;
-    border: 1px solid #707070;
-    font-weight: 500;
-    padding:4px;
-    padding-left: 10px;
-    width: 150px;
+.revisar-container .content .container .collection .row  a{
+    color:#FFC43A;
+    font-size: 17px;
 }
-.revisar-container .content .container input[type=number]::-webkit-outer-spin-button,
-.revisar-container .content .container input[type=number]::-webkit-inner-spin-button{
-    -webkit-appearance: none;
-    margin: 0; 
-}
-.revisar-container .content .container input[type=text]{
-    border-radius: 15px;
-    border: 1px solid #707070;
-    font-weight: 500;
-    padding:4px;
-    padding-left: 10px;
-    width: 200px;
-}
-
-.revisar-container .content button{
+.revisar-container .content .button-menu a{
     font:500 15px Roboto,'sans-serif';
     display: flex;
     align-items: center;
@@ -80,4 +68,10 @@
     padding-right: 15px;
     margin-top: 15px;
     float: right;
+}
+.revisar-container .content .button-menu a+ a{
+    margin-right: 15px;
+}
+.revisar-container .content .button-menu a+a svg{
+    margin-left:10px;
 }

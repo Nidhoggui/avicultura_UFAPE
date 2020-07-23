@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {FiChevronRight} from 'react-icons/fi';
 import {useHistory} from 'react-router-dom';
 
@@ -7,12 +7,24 @@ import './styles.css'
 
 export default function Egg(){
     const [pesoOvo,setPesoOvo]=useState('');
+    const [loteOvoCadastrados,setLoteOvoCadastrados]=useState([]);
     const [loteOvo,setLoteOvo]=useState('');
     const [alturaGema,setAlturaGema]=useState('');
     const [diametroGema,setDiametroGema]=useState('');
     const [pesoGema,setPesoGema]=useState('');
     const [corGema,setCorGema]=useState('');
+    const granjaID=localStorage.getItem('granjaID')
     const history=useHistory();
+
+    useEffect(()=>{
+        api.get('/perfil-lote',{
+            headers:{
+                Authorization:granjaID,
+            }
+        }).then(response=>{
+            setLoteOvoCadastrados(response.data)
+        })
+    },[granjaID])
 
     async function handleGema(event){
         event.preventDefault();
@@ -21,11 +33,11 @@ export default function Egg(){
             alturaGema,
             diametroGema,
             pesoGema,
-            corGema
+            corGema,
         }
         try{
-            const response=await api.post('/gema',{data});
-            localStorage.setItem('gemaID',response);
+            const response=await api.post('/gema',data);
+            localStorage.setItem('gemaID',response.data.id);
             localStorage.setItem('pesoOvo',pesoOvo);
             localStorage.setItem('loteOvo',loteOvo);
 
@@ -35,7 +47,6 @@ export default function Egg(){
             alert('Não foi possível cadastrar gema,tente novamente')
         }
     }
-
     function bubbleValue(event){
         const bubble=document.getElementsByClassName('bubble')[0];
 
@@ -63,12 +74,14 @@ export default function Egg(){
                                 <p>Gramas</p>
                                 </div>
                             </div>
-                            <div className="input">
+                            <div className="input" >
                                 <h4>Lote do Ovo</h4>
-                                <input type="text"
-                                value={loteOvo}
-                                onChange={e=>setLoteOvo(e.target.value)}
-                                /> 
+                                <select onChange={e=>setLoteOvo(e.target.value)} value={loteOvo}>
+                                    <option value="" disabled>Escolha um Lote</option>
+                                    {loteOvoCadastrados.map(lote=>(
+                                        <option value={lote.lote_id} key={lote.lote_id}>Galpão {lote.galpao}</option>
+                                    ))}
+                                </select>
                             </div>
                             <div className="input">
                                 <h4>Altura da Gema</h4>

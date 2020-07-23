@@ -7,6 +7,7 @@ import Albumen from './Egg/albumen'
 import Casca from './Egg/casca'
 import Revisar from './Egg/revisar'
 import Dashboard from './Dashboard'
+import Profile from './Profile'
 
 export default function Avicultura(){
     return(
@@ -19,6 +20,7 @@ export default function Avicultura(){
                     <Route path="/egg/casca" component={Casca}/>
                     <Route path="/egg/revisar" component={Revisar}/>
                     <Route path="/dashboard" component={Dashboard}/>
+                    <Route path="/profile" component={Profile}/>
                 </Switch>
         </div>
     )

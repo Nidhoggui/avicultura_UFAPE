@@ -11,22 +11,44 @@ export default function Casca(){
     const [espessuraP2,setEspessuraP2]=useState('');
     const [espessuraP3,setEspessuraP3]=useState('');
     const [corCasca,setCorCasca]=useState(1);
+    const gemaID=localStorage.getItem('gemaID');
+    const albumenID=localStorage.getItem('albumenID');
+    const pesoOvo=localStorage.getItem('pesoOvo');
+    const loteOvo=localStorage.getItem('loteOvo');
+    const granjaID=localStorage.getItem('granjaID');
     const history=useHistory();
 
     async function handleCasca(event){
         event.preventDefault();
-
-        const data={
+        const dataCasca={
             pesoCasca,
             espessuraP1,
             espessuraP2,
             espessuraP3,
             corCasca
         }
+        const dataOvo={
+            id_gema:gemaID,
+            id_albumen:albumenID,
+            id_casca:0,
+            lote:loteOvo,
+            pesoOvo
+        }
         try{
-            const response=await api.post('/casca',data);
-            localStorage.setItem('cascaID',response)
+            const responseCascaId=await api.post('/casca',dataCasca);
+            localStorage.setItem('cascaID',responseCascaId);
+            dataOvo.id_casca=responseCascaId.data.id;
+            await api.post('/ovo',dataOvo,{
+                headers:{
+                    Authorization:granjaID
+                }
+            })
             alert("Ovo Cadastrado com Sucesso!");
+            localStorage.removeItem('gemaID')
+            localStorage.removeItem('albumenID')
+            localStorage.removeItem('pesoOvo')
+            localStorage.removeItem('loteOvo')
+
             history.push('/egg/revisar');
         }catch(error){
             alert("Problema ao inserir Casca em ovo. Por favor,tente novamente.");

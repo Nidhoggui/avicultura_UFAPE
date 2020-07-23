@@ -16,6 +16,7 @@ export default function Routes(){
                 <Route path="/egg/casca" component={Avicultura}/>
                 <Route path="/egg/revisar" component={Avicultura}/>
                 <Route path="/dashboard" component={Avicultura}/>
+                <Route path="/profile" component={Avicultura}/>
             </Switch>
         </BrowserRouter>
     )

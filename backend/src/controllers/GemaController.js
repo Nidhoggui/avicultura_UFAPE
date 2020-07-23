@@ -6,13 +6,13 @@ module.exports = {
     response.json(gemas);
   },
   async create(request, response){
-    const { peso, altura, diametro, indice, cor } = request.body;
+    const { pesoGema, alturaGema, diametroGema, corGema } = request.body;
 
     const [id] = await connection('gemas').insert({
-      peso,
-      altura,
-      diametro,
-      cor,
+      pesoGema,
+      alturaGema,
+      diametroGema,
+      corGema,
     });
     return response.json({
       id

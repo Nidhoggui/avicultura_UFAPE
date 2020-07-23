@@ -1,17 +1,12 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable('cascas', function(table){
-    table.increments('id');
-    table.decimal('peso').notNullable();
-    table.integer('cor').notNullable();
-    table.integer('espessura0').notNullable();
-    table.integer('espessura1').notNullable();
-    table.integer('espessura2').notNullable();
-    table.integer('espessuraMedia').notNullable();
-
-    table.string('ovo_id').notNullable();
-    table.foreign('ovo_id').references('id').inTable('ovos');
-
+    table.increments('id_casca');
+    table.decimal('pesoCasca').notNullable();
+    table.integer('corCasca').notNullable();
+    table.integer('espessuraP1').notNullable();
+    table.integer('espessuraP2').notNullable();
+    table.integer('espessuraP3').notNullable();
   });
 };
 

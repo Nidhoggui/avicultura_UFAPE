@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import {FiChevronRight} from 'react-icons/fi';
 
@@ -12,18 +12,23 @@ export default function Albumen(){
     const gemaID=localStorage.getItem('gemaID');
     const history=useHistory();
 
+    useEffect(()=>{
+        if(typeof gemaID===undefined){
+            alert('É necessário ter inserido a gema primeiro!');
+            history.push('/egg')
+        }
+    })
     async function HandleAlbumen(event){
         event.preventDefault();
         
-        const Data=[{
+        const Data={
             pesoAlbumen,
             alturaAlbumen,
             diametroAlbumen
-        }]
-
+        }
         try{
-            const response=await api.post('/albumen',{Data},gemaID);
-            localStorage.setItem('albumenID',response)
+            const response=await api.post('/albumen',Data);
+            localStorage.setItem('albumenID',response.data.id)
             history.push('/egg/casca')
         }catch(error){
             alert('Erro ao inserir albúmen! Por favor,tente novamente')

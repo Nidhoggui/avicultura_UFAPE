@@ -1,15 +1,11 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable('gemas', function(table){
-    table.increments('id');
-    table.decimal('peso').notNullable();
-    table.integer('altura').notNullable();
-    table.integer('diametro').notNullable();
-    table.decimal('indice').notNullable();
-    table.integer('cor').notNullable();
-
-    table.string('ovo_id').notNullable();
-    table.foreign('ovo_id').references('id').inTable('ovos');
+    table.increments('id_gema');
+    table.decimal('pesoGema').notNullable();
+    table.integer('alturaGema').notNullable();
+    table.integer('diametroGema').notNullable();
+    table.integer('corGema').notNullable();
   });
 };
 
