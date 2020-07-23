@@ -1,17 +1,13 @@
 
 exports.up = function(knex) {
-  return knex.schema.createTable('albúmen', function(table){
-    table.increments('id');
-    table.decimal('peso').notNullable();
-    table.integer('altura').notNullable();
-    table.integer('diametro').notNullable();
-    table.float('haugh').notNullable();
-
-    table.string('ovo_id').notNullable();
-    table.foreign('ovo_id').references('id').inTable('ovos');
+  return knex.schema.createTable('albumen', function(table){
+    table.increments('id_albumen');
+    table.decimal('pesoAlbumen').notNullable();
+    table.integer('alturaAlbumen').notNullable();
+    table.integer('diametroAlbumen').notNullable();
   });
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('albúmen');
+  return knex.schema.dropTable('albumen');
 };

@@ -2,15 +2,14 @@ const connection = require('../database/connection');
 
 module.exports = {
   async create(request, response){
-    const { peso, cor, espessura0, espessura1, espessura2, espessuraMedia } = request.body;
+    const { pesoCasca, corCasca, espessuraP1, espessuraP2, espessuraP3 } = request.body;
 
     const [id] = await connection('cascas').insert({
-      peso,
-      cor,
-      espessura0,
-      espessura1,
-      espessura2,
-      espessuraMedia,
+      pesoCasca,
+      corCasca,
+      espessuraP1,
+      espessuraP2,
+      espessuraP3,
     });
     return response.json({
       id

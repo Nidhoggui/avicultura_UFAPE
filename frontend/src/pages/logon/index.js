@@ -1,7 +1,7 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import logoImg from '../../assets/chicken.svg'
 import background from '../../assets/egground.svg'
-import {Link,useHistory} from 'react-router-dom';
+import {Link,useHistory,useLocation} from 'react-router-dom';
 import api from '../../services/api'
 
 import './styles.css'
@@ -9,6 +9,13 @@ import './styles.css'
 export default function Logon (){
     const [id,SetId]=useState('');
     const history=useHistory();
+    const location=useLocation();
+
+    useEffect(()=>{
+        if(location.state!==undefined){
+            SetId(location.state.id);
+        }   
+    },[location])
 
     async function handleLogin(event){
         event.preventDefault();

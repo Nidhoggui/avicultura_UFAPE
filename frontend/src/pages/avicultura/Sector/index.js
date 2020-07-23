@@ -9,27 +9,26 @@ export default function Sector(){
     const [galpao,setGalpao]=useState(0);
     const [linhagem,setLinhagem]=useState('');
     const [idade,setIdade]=useState(0);
-    const [nutricao,setNutricao]=useState('');
-    const [aves,setAves]=useState(0);
+    const [nutrição,setNutricao]=useState('');
+    const [numero_de_aves,setAves]=useState(0);
     const granjaID=localStorage.getItem('granjaID');
 
     async function handleSector(event){
-        event.preventDefault();
 
         const data={
             linhagem,
             idade,
-            nutricao,
-            aves,
+            nutrição,
+            numero_de_aves,
             galpao,
         }
         try{
-            const response=await api.post('/setor-lote',{data},{
+            const response=await api.post('/setor-lote',data,{
                 headers:{
                     Authorization:granjaID,
                 }
-            });
-            alert(`Setor cadastrado com Sucesso! Seu id é: ${response.id}`)
+            })
+            alert(`Setor cadastrado com Sucesso! Seu id é: ${response.data.id}`)
         }
         catch(error){
             alert('Algo deu errado,tente novamente')
@@ -70,14 +69,14 @@ export default function Sector(){
                             <div className="input">
                                 <h4>Nutrição</h4>
                                 <input type="text"
-                                value={nutricao}
+                                value={nutrição}
                                 onChange={e=>setNutricao(e.target.value)}
                                 />
                             </div>
                             <div className="input">
                                 <h4>Número de Aves</h4>
                                 <input type="number"
-                                value={aves}
+                                value={numero_de_aves}
                                 onChange={e=>setAves(e.target.value)}
                                 />
                             </div>
