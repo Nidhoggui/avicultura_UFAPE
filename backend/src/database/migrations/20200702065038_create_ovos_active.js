@@ -4,6 +4,7 @@ exports.up = function(knex) {
     table.increments('id');
     table.decimal('pesoOvo').notNullable();
     table.string('lote').notNullable();
+    table.string('secaoOvo');
 
     table.string('id_gema').notNullable();
     table.foreign('id_gema').references('id').inTable('gemas');

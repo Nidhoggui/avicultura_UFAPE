@@ -8,6 +8,8 @@ exports.up = function(knex) {
     table.boolean('gaiola');
     table.string('localizacao');
     table.boolean('termosDeUso');
+    table.string('email').unique().notNullable();
+    table.string('password').notNullable();
   });
 };
 

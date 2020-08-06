@@ -13,6 +13,8 @@ const OvoController = require('./controllers/OvoController');
 const routes = express.Router();
 
 routes.post('/login', SessionController.create);
+routes.get('/login/emailcheck', SessionController.emailcheck);
+routes.put('/login/updatepassword', SessionController.updatepassword);
 
 routes.post('/cadastro', GranjaController.create);
 routes.get('/listar-granjas',GranjaController.index);
@@ -20,6 +22,7 @@ routes.get('/listar-granjas',GranjaController.index);
 routes.post('/setor-lote', LoteController.create);
 routes.get('/perfil-lote', LoteController.index);
 routes.delete('/perfil-lote/:id', LoteController.delete);
+routes.put('perfil-lote/:id', LoteController.update);
 
 routes.post('/albumen', AlbúmenController.create);
 routes.delete('/revisar-ovo/albumen/:id', AlbúmenController.delete);
